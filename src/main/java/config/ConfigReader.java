@@ -1,6 +1,6 @@
 package config;
 
-import org.junit.BeforeClass;
+//import org.junit.BeforeClass;
 
 import java.io.FileInputStream;
 import java.io.IOException;

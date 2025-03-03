@@ -5,158 +5,97 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>Playwrightjava</artifactId>
+    <artifactId>PlaywrightCucumberJava</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <allure.version>2.29.0</allure.version>
-        <aspectj.version>1.9.21</aspectj.version>
+        <cucumber.version>7.21.1</cucumber.version>
+        <playwright.version>1.41.0</playwright.version>
+        <junit.version>5.10.0</junit.version>
     </properties>
+
     <dependencies>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-java-commons</artifactId>
-            <version>2.16.1</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+        <!-- Playwright Dependency -->
         <dependency>
             <groupId>com.microsoft.playwright</groupId>
             <artifactId>playwright</artifactId>
-            <version>1.41.0</version>
+            <version>${playwright.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.10.2</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+
+        <!-- Cucumber Dependencies -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.21.1</version>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>${cucumber.version}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>7.21.1</version>
         </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit-platform-engine</artifactId>
-            <version>7.21.1</version> <!-- Use the appropriate version -->
-            <scope>test</scope>
 
-        </dependency>
-        <!-- JUnit 5 dependencies -->
+
+        <!-- JUnit 5 Dependency -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.10.0</version>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
-        <!-- JUnit Platform Suite -->
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-suite-api</artifactId>
-            <version>1.10.0</version>
+            <version>1.12.0</version>
             <scope>test</scope>
-
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit5</artifactId>
-            <version>${allure.version}</version>
-           <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-bom</artifactId>
-            <version>2.29.0</version>
-            <type>pom</type>
-            <scope>import</scope>
         </dependency>
 
+        <!--- testng dependency -->
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.7.0</version> <!-- Or the version you're using -->
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
+
+
+
 
     <build>
         <plugins>
+            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-
+                <version>3.10.1</version> <!-- Updated to a version that supports Java 21 -->
                 <configuration>
-
-                    <compilerArgs>-parameters</compilerArgs>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
+
+            <!-- Maven Surefire Plugin for Running Tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
+                <version>3.0.0-M4</version>
                 <configuration>
-                    <argLine>-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar</argLine>
-                    <systemPropertyVariables>
-                        <cucumber.execution.parallel.enabled>true</cucumber.execution.parallel.enabled>
-                        <cucumber.execution.parallel.config.fixed.parallelism>4</cucumber.execution.parallel.config.fixed.parallelism>
-                    </systemPropertyVariables>
-                    <includes>
+                    <argLine>--enable-preview</argLine>
 
-                        <include>**/MyTestRunner.java</include>
-                    </includes>
+                <includes>
+                    <include>**/*MyTestRunner.java</include>
+                </includes>
                 </configuration>
-                <dependencies>
-                    <dependency>
-
-
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjweaver</artifactId>
-                <version>1.9.21</version>
-                <scope>runtime</scope>
-                    </dependency>
-            </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.15.0</version>
-                <configuration>
-                    <reportVersion>2.13.8</reportVersion>
-                    <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
-                    <allureDownloadUrl>https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.13.8/allure-commandline-2.13.8.zip</allureDownloadUrl>
-                </configuration>
-                <executions>
-                    <execution>
-                    <id>allure-report</id>
-                    <phase>verify</phase>
-                    <goals>
-                        <goal>report</goal>
-                    </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.12</version>
-
-                <executions>
-                    <execution>
-                        <id>default</id>
-
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
-
     </build>
-
 </project>
