@@ -2,8 +2,6 @@ package pages;
 
 import base.FrameworkConfig;
 import com.microsoft.playwright.Page;
-import config.ConfigReader;
-import config.Settings;
 import models.LoginModel;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.*;

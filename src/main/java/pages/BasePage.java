@@ -1,8 +1,6 @@
 package pages;
 import base.FrameworkConfig;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.*;
 import config.ConfigReader;
 import config.Settings;
 

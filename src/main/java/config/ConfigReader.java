@@ -23,7 +23,7 @@ public class ConfigReader {
     private void ReadProperty() throws IOException {
         //Create Property Object
         Properties p = new Properties();
-        InputStream inputStream = new FileInputStream("src/test/java/config/GlobalConfig.properties");
+        InputStream inputStream = new FileInputStream("src/main/java/config/GlobalConfig.properties");
         p.load(inputStream);
 
         Settings.BrowserName = p.getProperty("BrowserName");

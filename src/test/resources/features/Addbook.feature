@@ -2,7 +2,7 @@ Feature: Add a Book
   As a user
   I want to add a book to the library system
   So that the book is available for others to view
-
+  @Test
   Scenario: Successfully add a book
     Given I navigate to the application
     And I enter following login details

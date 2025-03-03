@@ -1,7 +1,6 @@
 package steps;
 
 import base.FrameworkConfig;
-import com.microsoft.playwright.Page;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.And;
@@ -13,7 +12,6 @@ import pages.BasePage;
 import pages.HomePage;
 import pages.LoginPage;
 
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 public class LoginSteps {

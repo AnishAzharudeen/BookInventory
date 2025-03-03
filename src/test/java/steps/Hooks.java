@@ -6,7 +6,6 @@ import config.ConfigReader;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import org.testng.annotations.Test;
 
 
 public class Hooks {
