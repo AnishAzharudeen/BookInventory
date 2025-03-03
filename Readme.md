@@ -56,6 +56,12 @@ The following failed scenarios were identified while running the automated tests
     - **Failure Reason:** Unauthenticated users can add a book.
     - **Suggestion:** Implement authentication logic to restrict unauthorized users from adding books.
 
+##  📊 Test Execution Report
+
+The test execution report provides detailed information about the test scenarios, including the number of scenarios passed, failed, and skipped. The report also includes the duration of the test run and the steps executed in each scenario.
+![Cucumber Report](readmeimages/Cucumberreports.png)
+
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -105,12 +111,39 @@ baseUrl=https://example.com
 3. **Cross-Browser Testing**:
     - Supports multi-browser testing (Chromium, Firefox, Webkit).
 
-4. **Reporting**:
+4. **Parallel Execution**:
+    - Enables faster test execution by running scenarios or feature files simultaneously.
+
+5. **Reporting**:
     - Generates detailed cucumber reports with  test execution details.
+
+## 🔄 Parallel Execution with Cucumber
+
+This framework implements **parallel execution** for Cucumber test scenarios to improve test execution efficiency. The parallel execution enables multiple feature files or scenarios to run simultaneously, distributing workloads across available resources and significantly reducing overall test execution time.
+
+The **Cucumber JVM Parallel Plugin** is used to generate separate runners for each feature file, allowing scenarios to execute concurrently.
+
+### Configuration for Parallel Execution
+- **Maven Surefire Plugin** is configured to enable parallel test execution.
+- The framework uses the `cucumber-jvm-parallel-plugin` to split and execute feature files in parallel.
+
+
+![parallel execution implementation](readmeimages/parallel-execution.png)
+
+### Running Tests in Parallel
+To run tests in parallel, use the following Maven command:
+```bash
+mvn test -Dcucumber.options="--threads 3"
+```
+    
+
+
 
 ## 🧩 Future Enhancements
 
 - Integrate with CI/CD tools like Jenkins or GitHub Actions.
+- Implement a Docker container for running tests.
+- Extend the reporting capabilities with allure reports.
 - Add API Testing support.
 - Improve test coverage with additional test scenarios.
 - Implement data-driven testing using external sources (e.g., Excel, JSON).
