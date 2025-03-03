@@ -135,8 +135,11 @@ To run tests in parallel, use the following Maven command:
 ```bash
 mvn test -Dcucumber.options="--threads 3"
 ```
-    
 
+## ⚠️ Known  Issues  and Limitations
+
+- **TestRunner.java**:
+    - The `TestRunner.java` accepts only absolute paths for feature files. Relative paths are not supported.
 
 
 ## 🧩 Future Enhancements
