@@ -90,7 +90,11 @@
                 <version>3.0.0-M4</version>
                 <configuration>
                     <argLine>--enable-preview</argLine>
-
+                  <systemPropertyVariables>
+                    <cucumber.plugin>pretty</cucumber.plugin>
+                      <cucumber.execution.parallel.enabled>true</cucumber.execution.parallel.enabled>
+                      <cucumber.execution.parallel.config.fixed.parallelism>4</cucumber.execution.parallel.config.fixed.parallelism>
+                    </systemPropertyVariables>
                 <includes>
                     <include>**/*MyTestRunner.java</include>
                 </includes>
