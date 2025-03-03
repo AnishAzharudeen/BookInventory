@@ -16,7 +16,7 @@ Feature: Add a Book
       | title            |
       | The Great Gatsby |
 
-
+  @Test
   Scenario: Fail to add a book when the Title field is empty
     Given I navigate to the application
     And I enter following login details
@@ -29,7 +29,7 @@ Feature: Add a Book
     Then I should see an error message
       | field | message               |
       | Title | Title is required. |
-
+  @Test
   Scenario: Unauthenticated users cannot add a book
     Given I am not authenticated
     When I navigate to the "Add Book" page

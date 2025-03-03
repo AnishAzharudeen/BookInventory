@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "C:\\Users\\mhdaz\\IdeaProjects\\Playwrightjava.Java\\src\\test\\resources\\features",
+        features = "C:\\Users\\mhdaz\\IdeaProjects\\Playwrightjava\\src\\test\\resources\\features",
         glue = {"steps","hooks"},
         tags = "@Test",
         plugin = {"pretty", "json:target/cucumber-reports/Cucumber.json",

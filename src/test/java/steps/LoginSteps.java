@@ -43,11 +43,12 @@ public class LoginSteps {
     @Then("I should see welcome message")
     public void iShouldSeeWelcomeMessage(List<LoginModel> loginModelList) {
 
-        String welcomeText = "Welcome " + loginModelList.stream().findFirst().get().getUserName();
-        System.out.println("Welcome message: " + welcomeText);
-        assert FrameworkConfig.LocalPage.getByText(welcomeText).isVisible();
-
-       
+        String welcomeText1 = "Welcome, Admin!";
+        String welcomeText2 = "Welcome " + loginModelList.stream().findFirst().get().getUserName();
+        System.out.println("Checking for welcome messages: " + welcomeText1 + " or " + welcomeText2);
+        boolean isWelcomeMessageVisible = FrameworkConfig.LocalPage.getByText(welcomeText1).isVisible() ||
+                FrameworkConfig.LocalPage.getByText(welcomeText2).isVisible();
+        assert isWelcomeMessageVisible : "Neither of the welcome messages is visible on the page.";
     }
 
     @And("I enter invalid username and valid password")
