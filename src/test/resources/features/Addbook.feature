@@ -30,7 +30,7 @@ Feature: Add a Book
       | field | message               |
       | Title | Title is required. |
   @Test
-  Scenario: Unauthenticated users cannot add a book
+  Scenario: Verify  Unauthenticated users cannot add a book
     Given I am not authenticated
     When I navigate to the "Add Book" page
     Then I should be redirected to the login page
